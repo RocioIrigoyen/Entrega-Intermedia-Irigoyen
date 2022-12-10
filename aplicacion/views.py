@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def literatura(request):
+    return render(request, "aplicacion/literatura.html")
