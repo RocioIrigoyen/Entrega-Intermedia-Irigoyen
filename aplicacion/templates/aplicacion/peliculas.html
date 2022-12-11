@@ -3,7 +3,9 @@
 {% block contenido %}
   {% for pelicula in lista_peliculas %}
       <ul>
-          <li> Id: {{pelicula.id}}, Título: {{pelicula.nombre}}, Director: {{pelicula.director}}, Año: {{pelicula.año}}</li>
+          <li> Id: {{pelicula.id}}, Título: {{pelicula.nombre}}, Director: {{pelicula.director}}, Año: {{pelicula.año}}
+            <a href='actualizar/{{pelicula.id}}'>Actualizar</a>
+          </li>
       </ul>
   {% endfor %}
 {% endblock %}

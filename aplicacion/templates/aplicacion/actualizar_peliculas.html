@@ -1,0 +1,14 @@
+{% extends 'aplicacion/base.html' %}
+{% block titulo%} Modificar una Película {% endblock %}
+{% block contenido %}
+
+
+<form action="/peliculas/actualizar/{{pelicula.id}}" method="post"> 
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+<h2 style="color:green">{{msg_exito}}</h2>
+
+{% endblock %}

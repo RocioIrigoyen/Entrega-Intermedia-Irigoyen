@@ -3,7 +3,9 @@
 {% block contenido %}
   {% for juego in lista_videojuegos %}
       <ul>
-          <li> Id: {{juego.id}}, Título: {{juego.nombre}}, Desarrollador: {{juego.desarrollador}}, Año: {{juego.año}}</li>
+          <li> Id: {{juego.id}}, Título: {{juego.nombre}}, Desarrollador: {{juego.desarrollador}}, Año: {{juego.año}}
+            <a href='actualizar/{{juego.id}}'>Actualizar</a>
+          </li>
       </ul>
   {% endfor %}
 {% endblock %}

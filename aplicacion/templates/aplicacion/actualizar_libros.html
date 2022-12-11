@@ -1,0 +1,14 @@
+{% extends 'aplicacion/base.html' %}
+{% block titulo%} Modificar un Libro {% endblock %}
+{% block contenido %}
+
+
+<form action="/libros/actualizar/{{libro.id}}" method="post"> 
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+<h2 style="color:green">{{msg_exito}}</h2>
+
+{% endblock %}

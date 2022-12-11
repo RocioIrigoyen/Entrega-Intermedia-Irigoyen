@@ -3,7 +3,9 @@
 {% block contenido %}
   {% for libro in lista_libros %}
       <ul>
-          <li> Id: {{libro.id}}, Título: {{libro.nombre}}, Autor: {{libro.autor}}, Año de publicación: {{libro.año}}</li>
+          <li> Id: {{libro.id}}, Título: {{libro.nombre}}, Autor: {{libro.autor}}, Año de publicación: {{libro.año}}
+            <a href='actualizar/{{libro.id}}'>Actualizar</a>
+          </li>
       </ul>
   {% endfor %}
 {% endblock %}
