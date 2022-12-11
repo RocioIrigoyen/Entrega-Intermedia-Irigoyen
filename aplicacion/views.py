@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from aplicacion.models import Libro, Pelicula, Juegos
-from aplicacion.forms import Buscar
+from aplicacion.forms import Buscar, LibroForm, PeliculaForm, JuegosForm
 from django.views import View
 
 def literatura(request):
@@ -67,4 +67,67 @@ class BuscarJuego(View):
             form = self.form_class(initial=self.initial)
             return render(request, self.template_name, {'form':form, 
                                                         'lista_videojuegos':lista_videojuegos})
+        return render(request, self.template_name, {"form": form})
+
+class AltaLibro(View):
+
+    form_class = LibroForm
+    template_name = 'aplicacion/alta_libros.html'
+    initial = {"nombre":"", "autor":"", "año":""}
+
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            msg_exito = f"se cargo con éxito el libro {form.cleaned_data.get('nombre')}"
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'msg_exito': msg_exito})
+        
+        return render(request, self.template_name, {"form": form})
+
+class AltaPelicula(View):
+
+    form_class = PeliculaForm
+    template_name = 'aplicacion/alta_peliculas.html'
+    initial = {"nombre":"", "director":"", "año":""}
+
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            msg_exito = f"se cargo con éxito la película {form.cleaned_data.get('nombre')}"
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'msg_exito': msg_exito})
+        
+        return render(request, self.template_name, {"form": form})
+
+class AltaJuego(View):
+
+    form_class = JuegosForm
+    template_name = 'aplicacion/alta_videojuegos.html'
+    initial = {"nombre":"", "desarrollador":"", "año":""}
+
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            msg_exito = f"se cargo con éxito el videojuego {form.cleaned_data.get('nombre')}"
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'msg_exito': msg_exito})
+        
         return render(request, self.template_name, {"form": form})
