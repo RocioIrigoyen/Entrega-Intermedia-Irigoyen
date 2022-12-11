@@ -1,0 +1,9 @@
+{% extends 'aplicacion/base.html' %}
+{% block titulo%} Lista de películas {% endblock %}
+{% block contenido %}
+  {% for pelicula in lista_peliculas %}
+      <ul>
+          <li> Id: {{pelicula.id}}, Título: {{pelicula.nombre}}, Director: {{pelicula.director}}, Año: {{pelicula.año}}</li>
+      </ul>
+  {% endfor %}
+{% endblock %}

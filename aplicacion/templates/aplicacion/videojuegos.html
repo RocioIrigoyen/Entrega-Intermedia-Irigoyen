@@ -1,0 +1,9 @@
+{% extends 'aplicacion/base.html' %}
+{% block titulo%} Lista de videojuegos {% endblock %}
+{% block contenido %}
+  {% for juego in lista_videojuegos %}
+      <ul>
+          <li> Id: {{juego.id}}, Título: {{juego.nombre}}, Desarrollador: {{juego.desarrollador}}, Año: {{juego.año}}</li>
+      </ul>
+  {% endfor %}
+{% endblock %}
