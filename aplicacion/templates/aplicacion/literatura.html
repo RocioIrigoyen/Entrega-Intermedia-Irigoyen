@@ -1,4 +1,9 @@
 {% extends 'aplicacion/base.html' %}
 {% block titulo%} Lista de trabajos literarios {% endblock %}
-{% block contenido %}  rellenar luego
+{% block contenido %}
+  {% for libro in lista_libros %}
+      <ul>
+          <li> Título: {{libro.nombre}}, Autor: {{libro.autor}}, Año de publicación: {{libro.año}}</li>
+      </ul>
+  {% endfor %}
 {% endblock %}
