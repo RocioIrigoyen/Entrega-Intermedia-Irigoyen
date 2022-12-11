@@ -1,0 +1,16 @@
+{% extends 'aplicacion/base.html' %}
+{% block titulo%} Buscar películas por título {% endblock %}
+{% block contenido %}
+ 
+<form action="/peliculas/buscar" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+
+  {% for pelicula in lista_peliculas %}
+      <ul>
+          <li> Id: {{pelicula.id}}, Título: {{pelicula.nombre}}, Director: {{pelicula.director}}, Año: {{pelicula.año}}</li>
+      </ul>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'aplicacion/base.html' %}
+{% block titulo%} Buscar libros por título {% endblock %}
+{% block contenido %}
+ 
+<form action="/libros/buscar" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+
+  {% for libro in lista_libros %}
+      <ul>
+          <li> Id: {{libro.id}}, Título: {{libro.nombre}}, Autor: {{libro.autor}}, Año de publicación: {{libro.año}}</li>
+      </ul>
+  {% endfor %}
+{% endblock %}

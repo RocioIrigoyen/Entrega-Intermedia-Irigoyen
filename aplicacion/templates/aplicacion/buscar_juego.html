@@ -1,0 +1,16 @@
+{% extends 'aplicacion/base.html' %}
+{% block titulo%} Buscar videojuegos por título {% endblock %}
+{% block contenido %}
+ 
+<form action="/videojuegos/buscar" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+
+  {% for juego in lista_videojuegos %}
+      <ul>
+          <li> Id: {{juego.id}}, Título: {{juego.nombre}}, Desarrollador: {{juego.desarrollador}}, Año: {{juego.año}}</li>
+      </ul>
+  {% endfor %}
+{% endblock %}
