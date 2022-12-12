@@ -200,3 +200,36 @@ class ActualizarJuego(View):
                                                       'msg_exito': msg_exito})
       
       return render(request, self.template_name, {"form": form})
+
+class BorrarLibro(View):
+  template_name = 'aplicacion/literatura.html'
+  
+  
+  
+  def get(self, request, pk): 
+      libro = get_object_or_404(Libro, pk=pk)
+      libro.delete()
+      libro= Libro.objects.all()    
+      return render(request, self.template_name, {'lista_libros': libro})
+
+class BorrarPelicula(View):
+  template_name = 'aplicacion/peliculas.html'
+  
+  
+  
+  def get(self, request, pk): 
+      pelicula = get_object_or_404(Pelicula, pk=pk)
+      pelicula.delete()
+      pelicula= Pelicula.objects.all()    
+      return render(request, self.template_name, {'lista_peliculas': pelicula})
+
+class BorrarJuego(View):
+  template_name = 'aplicacion/videojuegos.html'
+  
+  
+  
+  def get(self, request, pk): 
+      juego = get_object_or_404(Juegos, pk=pk)
+      juego.delete()
+      juego= Juegos.objects.all()    
+      return render(request, self.template_name, {'lista_videojuegos': juego})

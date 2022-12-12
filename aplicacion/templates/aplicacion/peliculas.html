@@ -2,10 +2,11 @@
 {% block titulo%} Lista de películas {% endblock %}
 {% block contenido %}
   {% for pelicula in lista_peliculas %}
+  <a href='/peliculas/alta'>Nueva película</a>
       <ul>
-          <li> Id: {{pelicula.id}}, Título: {{pelicula.nombre}}, Director: {{pelicula.director}}, Año: {{pelicula.año}}
+           <li> Id: {{pelicula.id}}, Título: {{pelicula.nombre}}, Director: {{pelicula.director}}, Año: {{pelicula.año}} </li>
             <a href='actualizar/{{pelicula.id}}'>Actualizar</a>
-          </li>
+            <a href='borrar/{{pelicula.id}}'>Borrar</a>
       </ul>
   {% endfor %}
 {% endblock %}

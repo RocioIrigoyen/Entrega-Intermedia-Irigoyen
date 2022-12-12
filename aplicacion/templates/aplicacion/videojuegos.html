@@ -2,10 +2,11 @@
 {% block titulo%} Lista de videojuegos {% endblock %}
 {% block contenido %}
   {% for juego in lista_videojuegos %}
+  <a href='/videojuegos/alta'>Nuevo videojuego</a>
       <ul>
-          <li> Id: {{juego.id}}, Título: {{juego.nombre}}, Desarrollador: {{juego.desarrollador}}, Año: {{juego.año}}
+           <li> Id: {{juego.id}}, Título: {{juego.nombre}}, Desarrollador: {{juego.desarrollador}}, Año: {{juego.año}}</li>
             <a href='actualizar/{{juego.id}}'>Actualizar</a>
-          </li>
+            <a href='borrar/{{juego.id}}'>Borrar</a>
       </ul>
   {% endfor %}
 {% endblock %}

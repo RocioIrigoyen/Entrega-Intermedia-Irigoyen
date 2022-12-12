@@ -2,10 +2,11 @@
 {% block titulo%} Lista de trabajos literarios {% endblock %}
 {% block contenido %}
   {% for libro in lista_libros %}
+  <a href='/libros/alta'>Nuevo libro</a>
       <ul>
-          <li> Id: {{libro.id}}, Título: {{libro.nombre}}, Autor: {{libro.autor}}, Año de publicación: {{libro.año}}
+           <li> Id: {{libro.id}}, Título: {{libro.nombre}}, Autor: {{libro.autor}}, Año de publicación: {{libro.año}}</li>
             <a href='actualizar/{{libro.id}}'>Actualizar</a>
-          </li>
+            <a href='borrar/{{libro.id}}'>Borrar</a>
       </ul>
   {% endfor %}
 {% endblock %}
