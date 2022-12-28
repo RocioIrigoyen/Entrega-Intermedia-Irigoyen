@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "aplicacion.apps.AplicacionConfig",
+    "blog_terror.apps.BlogTerrorConfig",
 ]
 
 MIDDLEWARE = [
