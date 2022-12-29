@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from aplicacion.views import mostrar_libros, mostrar_peliculas, mostrar_videojuegos, BuscarLibro, BuscarPelicula, BuscarJuego, AltaLibro, AltaPelicula, AltaJuego, ActualizarLibro, ActualizarPelicula, ActualizarJuego, BorrarLibro, BorrarPelicula, BorrarJuego
-from blog_terror.views import index
+from blog_terror.views import index, PostList, PostCrear, PostActualizar, PostBorrar, PostDetalle
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,5 +35,10 @@ urlpatterns = [
      path("libros/borrar/<int:pk>", BorrarLibro.as_view()),
     path("peliculas/borrar/<int:pk>", BorrarPelicula.as_view()),
     path("videojuegos/borrar/<int:pk>", BorrarJuego.as_view()),
-    path("blog-terror/", index),
+    path("blog-terror/", index, name= "blog-terror-index"),
+    path("blog-terror/listar/", PostList.as_view(), name= "blog-terror-listar"),
+    path("blog-terror/crear/", PostCrear.as_view(), name= "blog-terror-crear"),
+    path("blog-terror/<int:pk>/actualizar/", PostActualizar.as_view(), name= "blog-terror-actualizar"),
+    path("blog-terror/<int:pk>/detalle/", PostDetalle.as_view(), name= "blog-terror-detalle"),
+    path("blog-terror/<int:pk>/borrar/", PostBorrar.as_view(), name= "blog-terror-borrar"),
 ]

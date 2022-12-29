@@ -1,0 +1,22 @@
+{% extends "blog_terror/base.html" %}
+
+{% block contenido %}
+ 
+    <a href="{% url 'blog-terror-crear' %}">Crear Post</a>
+    
+
+<ul>
+{% for post in object_list %}
+    <li>
+        {{post.publicado_el}} - - {{post.titulo}} 
+        
+        
+            <a href="{% url 'blog-terror-borrar' post.id %}">Borrar</a>
+            <a href="{% url 'blog-terror-actualizar' post.id %}">Actualizar</a>
+            <a href="{% url 'blog-terror-detalle' post.id %}">Ver</a>
+        
+        
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
