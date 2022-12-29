@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from aplicacion.views import mostrar_libros, mostrar_peliculas, mostrar_videojuegos, BuscarLibro, BuscarPelicula, BuscarJuego, AltaLibro, AltaPelicula, AltaJuego, ActualizarLibro, ActualizarPelicula, ActualizarJuego, BorrarLibro, BorrarPelicula, BorrarJuego
-from blog_terror.views import index, PostList, PostCrear, PostActualizar, PostBorrar, PostDetalle
+from blog_terror.views import (index, PostList, PostCrear, PostActualizar, PostBorrar, 
+                               PostDetalle, UserSignup, UserLogin, UserLogout)
+from django.contrib.admin.views.decorators import staff_member_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,8 +39,11 @@ urlpatterns = [
     path("videojuegos/borrar/<int:pk>", BorrarJuego.as_view()),
     path("blog-terror/", index, name= "blog-terror-index"),
     path("blog-terror/listar/", PostList.as_view(), name= "blog-terror-listar"),
-    path("blog-terror/crear/", PostCrear.as_view(), name= "blog-terror-crear"),
-    path("blog-terror/<int:pk>/actualizar/", PostActualizar.as_view(), name= "blog-terror-actualizar"),
+    path("blog-terror/crear/", staff_member_required(PostCrear.as_view()), name= "blog-terror-crear"),
+    path("blog-terror/<int:pk>/actualizar/", staff_member_required(PostActualizar.as_view()), name= "blog-terror-actualizar"),
     path("blog-terror/<int:pk>/detalle/", PostDetalle.as_view(), name= "blog-terror-detalle"),
-    path("blog-terror/<int:pk>/borrar/", PostBorrar.as_view(), name= "blog-terror-borrar"),
+    path("blog-terror/<int:pk>/borrar/", staff_member_required(PostBorrar.as_view()), name= "blog-terror-borrar"),
+    path("blog-terror/signup/", UserSignup.as_view(), name = "blog-terror-signup"),
+    path("blog-terror/login/", UserLogin.as_view(), name = "blog-terror-login"),
+    path("blog-terror/logout/", UserLogout.as_view(), name = "blog-terror-logout"),
 ]
