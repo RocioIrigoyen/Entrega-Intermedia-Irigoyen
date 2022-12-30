@@ -21,8 +21,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{% url 'blog-terror-index' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Acerca de mí</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'blog-terror-about' %}">Acerca de mí</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'blog-terror-mensajes-crear' %}">Contacto</a></li>
                         
                         
                         {% if user.is_authenticated %}

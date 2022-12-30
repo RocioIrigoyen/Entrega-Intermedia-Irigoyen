@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from aplicacion.views import mostrar_libros, mostrar_peliculas, mostrar_videojuegos, BuscarLibro, BuscarPelicula, BuscarJuego, AltaLibro, AltaPelicula, AltaJuego, ActualizarLibro, ActualizarPelicula, ActualizarJuego, BorrarLibro, BorrarPelicula, BorrarJuego
 from blog_terror.views import (index, PostList, PostCrear, PostActualizar, PostBorrar, 
-                               PostDetalle, UserSignup, UserLogin, UserLogout)
+                               PostDetalle, UserSignup, UserLogin, UserLogout, MensajeListar,
+                               MensajeBorrar, MensajeCrear, MensajeDetalle)
 from django.contrib.admin.views.decorators import staff_member_required
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,4 +48,9 @@ urlpatterns = [
     path("blog-terror/signup/", UserSignup.as_view(), name = "blog-terror-signup"),
     path("blog-terror/login/", UserLogin.as_view(), name = "blog-terror-login"),
     path("blog-terror/logout/", UserLogout.as_view(), name = "blog-terror-logout"),
+    path("blog-terror/mensajes/crear/", MensajeCrear.as_view(), name = "blog-terror-mensajes-crear"),
+    path("blog-terror/mensajes/<int:pk>/detalle/", MensajeDetalle.as_view(), name = "blog-terror-mensajes-detalle"),
+    path("blog-terror/mensajes/listar/", MensajeListar.as_view(), name = "blog-terror-mensajes-listar"),
+    path('blog-terror/mensajes/<int:pk>/borrar/', MensajeBorrar.as_view(), name="blog-terror-mensajes-borrar"),
+    path('blog-terror/about', TemplateView.as_view(template_name='blog_terror/about.html'), name="blog-terror-about"),
 ]
