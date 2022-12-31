@@ -3,6 +3,8 @@
 {% block contenido %}
 {% if user.is_authenticated %}
     <a href="{% url 'blog-terror-crear' %}">Crear Post</a>
+    <a href="{% url 'blog-terror-avatar-actualizar' user.id %}">Actualizar Avatar</a>
+    <a href="{% url 'blog-terror-user-actualizar' user.id %}">Actualizar Perfil</a>
     <a href="{% url 'blog-terror-mensajes-listar' %}">Ver Mensajes</a>
 {% endif %}
     

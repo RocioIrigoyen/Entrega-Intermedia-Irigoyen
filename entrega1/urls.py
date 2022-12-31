@@ -13,12 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from aplicacion.views import mostrar_libros, mostrar_peliculas, mostrar_videojuegos, BuscarLibro, BuscarPelicula, BuscarJuego, AltaLibro, AltaPelicula, AltaJuego, ActualizarLibro, ActualizarPelicula, ActualizarJuego, BorrarLibro, BorrarPelicula, BorrarJuego
 from blog_terror.views import (index, PostList, PostCrear, PostActualizar, PostBorrar, 
                                PostDetalle, UserSignup, UserLogin, UserLogout, MensajeListar,
-                               MensajeBorrar, MensajeCrear, MensajeDetalle)
+                               MensajeBorrar, MensajeCrear, MensajeDetalle, AvatarActualizar, UserActualizar)
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import TemplateView
 
@@ -53,4 +55,8 @@ urlpatterns = [
     path("blog-terror/mensajes/listar/", MensajeListar.as_view(), name = "blog-terror-mensajes-listar"),
     path('blog-terror/mensajes/<int:pk>/borrar/', MensajeBorrar.as_view(), name="blog-terror-mensajes-borrar"),
     path('blog-terror/about', TemplateView.as_view(template_name='blog_terror/about.html'), name="blog-terror-about"),
+    path("blog-terror/avatares/<int:pk>/actualizar/", AvatarActualizar.as_view(), name = "blog-terror-avatar-actualizar"),
+    path("blog-terror/user/<int:pk>/actualizar/", UserActualizar.as_view(), name = "blog-terror-user-actualizar"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
-from blog_terror.models import Post, Mensaje
+from blog_terror.models import Post, Mensaje, Avatar
 from django.urls import reverse_lazy
 from blog_terror.forms import UsuarioForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.admin import User
 
 def index(request):
-    return render(request, "blog_terror/index.html")
+    posts = Post.objects.order_by('-publicado_el').all()
+    return render(request, "blog_terror/index.html", {"posts": posts})
 
 class PostList(ListView):
     model = Post
@@ -55,3 +57,12 @@ class MensajeBorrar(LoginRequiredMixin, DeleteView):
     model = Mensaje
     success_url = reverse_lazy("blog-terror-mensajes-listar")
 
+class AvatarActualizar(UpdateView):
+    model= Avatar
+    fields = ["imagen"]
+    success_url= reverse_lazy("blog-terror-listar")
+
+class UserActualizar(UpdateView):
+    model = User
+    fields=["first_name","last_name","email"]
+    success_url= reverse_lazy("blog-terror-listar")

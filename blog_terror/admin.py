@@ -1,3 +1,6 @@
 from django.contrib import admin
+from blog_terror.models import Avatar
 
-# Register your models here.
+admin.site.register(Avatar)
+
+
