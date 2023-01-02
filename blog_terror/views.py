@@ -8,8 +8,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.admin import User
 
 def index(request):
-    posts = Post.objects.order_by('-publicado_el').all()
-    return render(request, "blog_terror/index.html", {"posts": posts})
+    posts = Post.objects.order_by('-publicado_el') [1:5]
+    post_header = Post.objects.last()
+    print(posts)
+    return render(request, "blog_terror/index.html", {"posts": posts, "post_header": post_header })
 
 class PostList(ListView):
     model = Post

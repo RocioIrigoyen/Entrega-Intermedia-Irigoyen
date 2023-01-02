@@ -53,7 +53,7 @@ urlpatterns = [
     path("blog-terror/mensajes/crear/", MensajeCrear.as_view(), name = "blog-terror-mensajes-crear"),
     path("blog-terror/mensajes/<int:pk>/detalle/", MensajeDetalle.as_view(), name = "blog-terror-mensajes-detalle"),
     path("blog-terror/mensajes/listar/", MensajeListar.as_view(), name = "blog-terror-mensajes-listar"),
-    path('blog-terror/mensajes/<int:pk>/borrar/', MensajeBorrar.as_view(), name="blog-terror-mensajes-borrar"),
+    path('blog-terror/mensajes/<int:pk>/borrar/', staff_member_required(MensajeBorrar.as_view()), name="blog-terror-mensajes-borrar"),
     path('blog-terror/about', TemplateView.as_view(template_name='blog_terror/about.html'), name="blog-terror-about"),
     path("blog-terror/avatares/<int:pk>/actualizar/", AvatarActualizar.as_view(), name = "blog-terror-avatar-actualizar"),
     path("blog-terror/user/<int:pk>/actualizar/", UserActualizar.as_view(), name = "blog-terror-user-actualizar"),

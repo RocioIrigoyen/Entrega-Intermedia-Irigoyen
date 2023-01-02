@@ -5,7 +5,10 @@
 {% for mensaje in object_list %}
     <li>
         {{mensaje.enviado_el}} - - {{mensaje.email}} -- {{mensaje.nombre}}
-        <a href="{% url 'blog-terror-mensajes-borrar' mensaje.id %}">Borrar</a> 
+        
+        {% if user.is_superuser %}
+        <a href="{% url 'blog-terror-mensajes-borrar' mensaje.id %}">Borrar</a>
+        {% endif %} 
         <a href="{% url 'blog-terror-mensajes-detalle' mensaje.id %}">Ver</a>
     </li>
 {% endfor %}
