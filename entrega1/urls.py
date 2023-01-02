@@ -57,6 +57,8 @@ urlpatterns = [
     path('blog-terror/about', TemplateView.as_view(template_name='blog_terror/about.html'), name="blog-terror-about"),
     path("blog-terror/avatares/<int:pk>/actualizar/", AvatarActualizar.as_view(), name = "blog-terror-avatar-actualizar"),
     path("blog-terror/user/<int:pk>/actualizar/", UserActualizar.as_view(), name = "blog-terror-user-actualizar"),
+    path("success_update_message/", TemplateView.as_view(template_name = "blog_terror/success_update_message.html")),
+    path("success_sent_message/", TemplateView.as_view(template_name = "blog_terror/success_sent_message.html")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

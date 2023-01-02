@@ -23,7 +23,7 @@ class PostCrear(LoginRequiredMixin, CreateView):
 
 class PostActualizar(LoginRequiredMixin, UpdateView):
     model = Post
-    success_url = reverse_lazy("blog-terror-listar")
+    success_url = "/success_update_message"
     fields = '__all__'
 
 class PostDetalle(DetailView):
@@ -52,7 +52,7 @@ class MensajeListar(LoginRequiredMixin, ListView):
 
 class MensajeCrear(CreateView):
     model = Mensaje
-    success_url = reverse_lazy("blog-terror-mensajes-crear")
+    success_url = "/success_sent_message"
     fields = ['nombre', 'email', 'texto']
 
 class MensajeBorrar(LoginRequiredMixin, DeleteView):
